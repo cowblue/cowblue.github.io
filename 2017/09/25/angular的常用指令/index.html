@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="angular,框架," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Angular指令 HTML在构建应用（App）时存在诸多不足之处  AngularJS通过扩展一系列的HTML属性或标签来弥补这些缺陷  所谓指令就是AngularJS自定义的HTML属性或标签  这些指令都是以ng-做为前缀的，例如ng-app、ng-controller、ng-repeat等。 1.内置指令 ng-app 指定应用根元素 也就是ng管理的范围.可以使用全局对象angular的">
+<meta name="keywords" content="angular,框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="angular的常用指令">
+<meta property="og:url" content="http://yoursite.com/2017/09/25/angular的常用指令/index.html">
+<meta property="og:site_name" content="追风筝的人">
+<meta property="og:description" content="Angular指令 HTML在构建应用（App）时存在诸多不足之处  AngularJS通过扩展一系列的HTML属性或标签来弥补这些缺陷  所谓指令就是AngularJS自定义的HTML属性或标签  这些指令都是以ng-做为前缀的，例如ng-app、ng-controller、ng-repeat等。 1.内置指令 ng-app 指定应用根元素 也就是ng管理的范围.可以使用全局对象angular的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-25T05:47:53.344Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="angular的常用指令">
+<meta name="twitter:description" content="Angular指令 HTML在构建应用（App）时存在诸多不足之处  AngularJS通过扩展一系列的HTML属性或标签来弥补这些缺陷  所谓指令就是AngularJS自定义的HTML属性或标签  这些指令都是以ng-做为前缀的，例如ng-app、ng-controller、ng-repeat等。 1.内置指令 ng-app 指定应用根元素 也就是ng管理的范围.可以使用全局对象angular的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '作者'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/25/angular的常用指令/"/>
+
+
+
+
+
+  <title>angular的常用指令 | 追风筝的人</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">追风筝的人</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-camera"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/25/angular的常用指令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="邹旭璇">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/L.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风筝的人">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">angular的常用指令</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-25T13:40:28+08:00">
+                2017-09-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/angular/" itemprop="url" rel="index">
+                    <span itemprop="name">angular</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Angular指令"><a href="#Angular指令" class="headerlink" title="Angular指令"></a>Angular指令</h1><ul>
+<li><p>HTML在构建应用（App）时存在诸多不足之处</p>
+</li>
+<li><p>AngularJS通过扩展一系列的HTML属性或标签来弥补这些缺陷</p>
+</li>
+<li><p>所谓指令就是AngularJS自定义的HTML属性或标签</p>
+</li>
+<li><p>这些指令都是以ng-做为前缀的，例如ng-app、ng-controller、ng-repeat等。</p>
+<h2 id="1-内置指令"><a href="#1-内置指令" class="headerlink" title="1.内置指令"></a>1.内置指令</h2></li>
+<li><p><code>ng-app</code> 指定应用根元素 也就是ng管理的范围.可以使用全局对象angular的module方法根据该属性的值创建模块对象.</p>
+</li>
+<li><p><code>ng-controller</code> 指定与控制器关联的视图.</p>
+</li>
+<li><p><code>ng-show</code> 控制元素及其子元素是否显示 true-&gt;显示 false-&gt;不显示</p>
+</li>
+<li><p><code>ng-hide</code> 控制元素及其子元素是否隐藏 true-&gt;隐藏 false-&gt;不隐藏</p>
+</li>
+<li><p><code>ng-if</code> 控制元素及其子元素是否创建 true-&gt;创建 false-&gt;删除.</p>
+</li>
+<li><p><code>ng-src</code> 增强图片路径. src=””虽然能显示,但是会报错.报错的原因.</p>
+</li>
+<li><p><code>ng-href</code> 增强href路径</p>
+</li>
+<li><p><code>ng-class</code> 值为对象 <code>{red:true}</code> 表示会添加1个red类名到元素身上.<code>{red:false}</code>不会将red类名添加到元素身上.</p>
+</li>
+<li><p><code>ng-include</code> 将外部文件包含进来.一般用在页面的公共部分.被请求的页面是以ajax的方式请求的. <code>ng-inlcude=&quot;&#39;path&#39;&quot;</code>需要注意的是,给该属性赋值的时候,属性本身的值应该使用双引号引起来,但是其中的路径还要使用单引号引起来.</p>
+</li>
+<li><p><code>ng-disable</code> 是否禁用表单元素</p>
+</li>
+<li><p><code>ng-readonly</code> 是否只读</p>
+</li>
+<li><p><code>ng-checked</code>　原生的checked属性带有歧义,ng补充1个新的指令ng-checked 其值bool类型 true选中 false不选中.</p>
+</li>
+<li><p><code>ng-selected</code> 是否选中</p>
+</li>
+<li><p>后续的学习中我们还会介绍其他的内置指令.</p>
+<h2 id="2-自定义指令"><a href="#2-自定义指令" class="headerlink" title="2.自定义指令"></a>2.自定义指令</h2></li>
+<li><p>AngularJS不仅提供了功能强大的内置指令.还提供了一套允许我们自定义指令的机制.</p>
+</li>
+<li><p>如果我们觉得ng提供的指令不够强大和好用,我们完全可以定义我们自己的指令.</p>
+</li>
+<li><p>模块对象app,提供了一个<code>directive</code>方法,这个方法就可以让我们自定义指令.</p>
+</li>
+<li><p>该方法需要两个参数</p>
+<ul>
+<li><p>第1个参数 指令的名称 - 指令名称不能包含符号，如果指令名称是<code>tag</code>,那么直接使用tag就行. 如果指令是<code>hmTag</code>,那么要使用<code>hm-tag</code></p>
+</li>
+<li><p>第2个参数 回调函数</p>
+<ul>
+<li>在ng解析这个指令的时候,就会自动去执行这个回调函数.</li>
+<li>这个回调函数必须要按照要求返回1个对象.<ul>
+<li>restrict: ECMA E:Element C:Class M:Mark A:Attribute 自定义指令</li>
+<li>replace: bool值,是否替换原有标签.</li>
+<li>template: 模板,自定义指令将被替换成什么.</li>
+<li>templateUrl:加载外部文件 给一个需要加载的文件的路径.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot; ng-app=&quot;hmApp&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">  &lt;title&gt;Title&lt;/title&gt;</div><div class="line">  &lt;script src=&quot;lib/angular.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div hm-tag&gt;&lt;/div&gt; &lt;!--加了这个自定义指令的标签中,就会被自动渲染自定义指令对应的template --&gt;</div><div class="line">&lt;script&gt;</div><div class="line">  var app = angular.module(&apos;hmApp&apos;,[]);</div><div class="line">  app.directive(&apos;hmTag&apos;,function () &#123;</div><div class="line">      return &#123;</div><div class="line">          restrict:&apos;EA&apos;,</div><div class="line">          replace:false,</div><div class="line">          template:&apos;&lt;h1&gt;我是中国人,我爱自己的祖国&lt;/h1&gt;&apos;</div><div class="line">      &#125;;</div><div class="line">  &#125;);</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/angular/" rel="tag"># angular</a>
+          
+            <a href="/tags/框架/" rel="tag"># 框架</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/25/gulp的简单实用/" rel="next" title="gulp的简单使用">
+                <i class="fa fa-chevron-left"></i> gulp的简单使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/L.jpg"
+              alt="邹旭璇" />
+          
+            <p class="site-author-name" itemprop="name">邹旭璇</p>
+            <p class="site-description motion-element" itemprop="description">是光与影的弯曲轨迹</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Angular指令"><span class="nav-number">1.</span> <span class="nav-text">Angular指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-内置指令"><span class="nav-number">1.1.</span> <span class="nav-text">1.内置指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-自定义指令"><span class="nav-number">1.2.</span> <span class="nav-text">2.自定义指令</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">邹旭璇</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
